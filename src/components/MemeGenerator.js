@@ -1,4 +1,5 @@
 import React from "react"
+import MemesList from './MemesList'
 
 class MemeGenerator extends React.Component{
     constructor(){
@@ -7,8 +8,35 @@ class MemeGenerator extends React.Component{
             topText: "",
             bottomText: "",
             randomImage: "http://i.imgflip.com/1bij.jpg",
-            allMemeImages: []
+            allMemeImages: [],
+            createdMemes: []
         }
+        
+    }
+
+    addToList = () => {
+        this.setState(prevState => {
+            let newMemes = {
+                topText: this.state.topText,
+                bottomText: this.state.bottomText,
+                randomImage: this.state.randomImage
+ 
+            }
+
+            console.log(newMemes)
+            const newMemesList = prevState.createdMemes.map(meme => meme);
+            newMemesList.push(newMemes)
+                
+            return {
+                
+                 createdMemes:  newMemesList
+                
+            }  
+        }
+        )
+        
+        
+
     }
 
     componentDidMount = () => {
@@ -37,6 +65,8 @@ class MemeGenerator extends React.Component{
     }
 
     render() {
+        const savedMemes = this.state.createdMemes;
+        console.log(savedMemes)
         return(
             <div>
                 <form className="meme-form">
@@ -61,6 +91,12 @@ class MemeGenerator extends React.Component{
                     <img src={this.state.randomImage} alt={this.state.randomImage} />
                     <h2 className="top">{this.state.topText}</h2>
                     <h2 className="bottom">{this.state.bottomText}</h2>
+                    <button onClick={this.addToList} className="btn">Save Meme</button>
+                    <div className="memeTwo">
+                    
+                        <MemesList memes={savedMemes} />
+                        
+                    </div>
                 </div>
             </div>
         )
