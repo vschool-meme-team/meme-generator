@@ -20,7 +20,6 @@ class MemeGenerator extends React.Component{
                 topText: this.state.topText,
                 bottomText: this.state.bottomText,
                 randomImage: this.state.randomImage
- 
             }
 
             console.log(newMemes)
