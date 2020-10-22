@@ -24,12 +24,16 @@ class MemeGenerator extends React.Component{
         const {name, value} = event.target
         this.setState({ [name]: value })
     }
-
+    
     memeButton = (event) => {
         event.preventDefault()
         const randomNumber = Math.floor(Math.random() * this.state.allMemeImages.length)
         const randomMemeImage = this.state.allMemeImages[randomNumber].url
         this.setState({randomImage: randomMemeImage})
+    }
+
+    deleteMeme = (event) => {
+
     }
 
     render() {
@@ -51,6 +55,7 @@ class MemeGenerator extends React.Component{
                         onChange={this.handleChange}
                     />  
                     <button onClick={this.memeButton}>Generate</button>
+                    <button onClick={this.deleteMeme}>Delete Meme</button>
                 </form>
                 <div className="meme">
                     <img src={this.state.randomImage} alt={this.state.randomImage} />
