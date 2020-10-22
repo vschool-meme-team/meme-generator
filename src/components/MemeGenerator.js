@@ -51,11 +51,14 @@ class MemeGenerator extends React.Component{
                         onChange={this.handleChange}
                     />  
                     <button onClick={this.memeButton}>Generate</button>
+                    <button onClick={this.deleteMeme}>Remove Favorite</button>
                 </form>
                 <div className="meme">
                     <img src={this.state.randomImage} alt={this.state.randomImage} />
                     <h2 className="top">{this.state.topText}</h2>
                     <h2 className="bottom">{this.state.bottomText}</h2>
+
+                    
                 </div>
             </div>
         )
