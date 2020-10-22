@@ -34,9 +34,6 @@ class MemeGenerator extends React.Component{
             }  
         }
         )
-        
-        
-
     }
 
     componentDidMount = () => {
