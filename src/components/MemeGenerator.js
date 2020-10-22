@@ -57,11 +57,13 @@ class MemeGenerator extends React.Component{
     }
 
     deleteMeme = (event) => {
-
+        let container = event.target.parentNode;
+        container.innerHTML = ""
     }
 
     render() {
         const savedMemes = this.state.createdMemes;
+        const deleteButton = this.deleteMeme;
         console.log(savedMemes)
         return(
             <div>
@@ -81,7 +83,7 @@ class MemeGenerator extends React.Component{
                         onChange={this.handleChange}
                     />  
                     <button onClick={this.memeButton}>Generate</button>
-                    <button onClick={this.deleteMeme}>Delete Meme</button>
+                    
                 </form>
                 <div className="meme">
                     <img src={this.state.randomImage} alt={this.state.randomImage} />
@@ -90,8 +92,7 @@ class MemeGenerator extends React.Component{
                     <button onClick={this.addToList} className="btn">Save Meme</button>
                     <div className="memeTwo">
                     
-                        <MemesList memes={savedMemes} />
-                        
+                        <MemesList memes={savedMemes} deleteButton={deleteButton}/>
                     </div>
                 </div>
             </div>
